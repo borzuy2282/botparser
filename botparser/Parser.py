@@ -11,6 +11,6 @@ def parseUrl(url):
     r = requests.get(url)
     soup = b(r.text, 'html.parser')
     petitions = soup.find_all('a', class_='pet_link')
-    return [str(c)[36:42] for c in petitions]
+    return [c.get('href') for c in petitions]
 # print(*parseTitle(URL), sep='\n')
 # print(*parseUrl(URL), sep='\n')
